@@ -2359,7 +2359,8 @@ textarea {
     .timeline__dot {
         width: 12px;
         height: 12px;
-        left: -26px;
+        /* Timeline line center: 8px + (2px / 2). */
+        left: -23px;
         top: 14px;
     }
 
