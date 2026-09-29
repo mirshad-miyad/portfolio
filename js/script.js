@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.getElementById('nav-menu');
     const navToggle = document.getElementById('nav-toggle');
     const navClose = document.getElementById('nav-close');
+    const themeToggles = document.querySelectorAll('[data-theme-toggle]');
     const navLinks = document.querySelectorAll('.nav__link');
     const sections = document.querySelectorAll('section[id]');
     const backToTop = document.getElementById('back-to-top');
@@ -23,6 +24,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const skillCards = document.querySelectorAll('.skill__card');
     const yearSpan = document.getElementById('current-year');
     const animatedElements = document.querySelectorAll('[data-animate]');
+
+    // ===== THEME TOGGLE =====
+    function setTheme(theme, persist = true) {
+        const normalizedTheme = theme === 'light' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', normalizedTheme);
+
+        if (themeToggles.length) {
+            const isLight = normalizedTheme === 'light';
+            const nextThemeLabel = isLight ? 'dark' : 'light';
+            const label = `Switch to ${nextThemeLabel} mode`;
+            themeToggles.forEach(toggle => {
+                toggle.setAttribute('aria-label', label);
+                toggle.setAttribute('title', label);
+                toggle.setAttribute('aria-pressed', String(isLight));
+            });
+        }
+
+        if (persist) {
+            try {
+                localStorage.setItem('theme', normalizedTheme);
+            } catch (error) {
+                // Theme still changes for this visit if storage is unavailable.
+            }
+        }
+    }
+
+    setTheme(document.documentElement.getAttribute('data-theme'), false);
+
+    if (themeToggles.length) {
+        themeToggles.forEach(toggle => toggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            setTheme(currentTheme === 'light' ? 'dark' : 'light');
+        }));
+    }
 
     // ===== MOBILE NAV OVERLAY =====
     let navOverlay = document.querySelector('.nav__overlay');

@@ -1,20 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        try {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light' || savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+        } catch (error) {
+            // Keep the default dark theme when storage is unavailable.
+        }
+    </script>
     <meta name="description"
-        content="Mohamed Mirshad - Software Developer. Professional portfolio showcasing web development projects, skills, and experience in HTML, CSS, JavaScript, PHP, Node.js, and more.">
+        content="Mohamed Mirshad - Web Developer. Professional portfolio showcasing web development projects, skills, and experience in HTML, CSS, JavaScript, PHP, Node.js, and more.">
     <meta name="keywords"
-        content="Mohamed Mirshad, Software Developer, Web Developer, Portfolio, HTML, CSS, JavaScript, PHP, Node.js">
+        content="Mohamed Mirshad, Web Developer, Portfolio, HTML, CSS, JavaScript, PHP, Node.js">
     <meta name="author" content="Mohamed Mirshad">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Mohamed Mirshad | Software Developer Portfolio">
+    <meta property="og:title" content="Mohamed Mirshad | Web Developer Portfolio">
     <meta property="og:description"
-        content="Software Developer specializing in modern web technologies. View my projects and get in touch.">
+        content="Web Developer specializing in modern web technologies. View my projects and get in touch.">
     <meta property="og:type" content="website">
-    <title>Mohamed Mirshad | Software Developer Portfolio</title>
+    <title>Mohamed Mirshad | Web Developer Portfolio</title>
     <link rel="icon" type="image/gif" href="assets/icons/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,9 +71,38 @@
                         <line x1="6" y1="6" x2="18" y2="18"></line>
                     </svg>
                 </button>
+                <button class="theme-toggle theme-toggle--menu" data-theme-toggle type="button"
+                    aria-label="Switch to light mode" title="Switch to light mode" aria-pressed="false">
+                    <svg class="theme-toggle__icon theme-toggle__sun" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+                    </svg>
+                    <svg class="theme-toggle__icon theme-toggle__moon" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <path d="M20.2 15.3A8.5 8.5 0 0 1 8.7 3.8 8.5 8.5 0 1 0 20.2 15.3Z"></path>
+                    </svg>
+                </button>
             </div>
 
             <div class="nav__actions">
+                <button class="theme-toggle" id="theme-toggle" data-theme-toggle type="button" aria-label="Switch to light mode"
+                    title="Switch to light mode" aria-pressed="false">
+                    <svg class="theme-toggle__icon theme-toggle__sun" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+                    </svg>
+                    <svg class="theme-toggle__icon theme-toggle__moon" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <path d="M20.2 15.3A8.5 8.5 0 0 1 8.7 3.8 8.5 8.5 0 1 0 20.2 15.3Z"></path>
+                    </svg>
+                </button>
+
                 <a href="#contact" class="nav__hire-btn">Hire Me</a>
 
                 <button class="nav__toggle" id="nav-toggle" aria-label="Open menu">
@@ -90,8 +129,12 @@
                     </h1>
 
                     <h2 class="hero__subtitle" data-animate="fade-up" data-delay="200">
-                        I'm a Software Developer
+                        I'm a Web Developer
                     </h2>
+
+                    <p class="hero__role-note" data-animate="fade-up" data-delay="250">
+                        Aspiring Full-Stack Developer
+                    </p>
 
                     <p class="hero__description" data-animate="fade-up" data-delay="300">
                         Passionate about crafting seamless digital experiences from front to back.
@@ -153,7 +196,7 @@
                     <div class="hero__image-ring">
                         <div class="hero__image-ring-inner"></div>
                         <div class="hero__image-container">
-                            <img src="assets/images/profile.jpg" alt="Mohamed Mirshad - Software Developer"
+                            <img src="assets/images/profile.jpg" alt="Mohamed Mirshad - Web Developer"
                                 class="hero__image" loading="eager">
                         </div>
                         <div class="hero__orbit-dot hero__orbit-dot--1"></div>
@@ -207,10 +250,10 @@
 
                     <div class="about__details" data-animate="fade-left">
                         <h3 class="about__heading">
-                            A Passionate <span class="gradient-text">Software Developer</span> Based in Sri Lanka
+                            A Passionate <span class="gradient-text">Web Developer</span> Based in Sri Lanka
                         </h3>
                         <p class="about__text">
-                            I'm Mohamed Mirshad, a dedicated Software Developer with a strong passion for building
+                            I'm Mohamed Mirshad, a dedicated Web Developer with a strong passion for building
                             efficient, scalable, and visually compelling web applications. I specialize in both frontend
                             and backend technologies, bringing ideas to life with clean code and modern design
                             principles.
@@ -268,7 +311,7 @@
                         </div>
 
                         <div class="about__badges">
-                            <span class="badge">Software Developer</span>
+                            <span class="badge">Web Developer</span>
                             <span class="badge">Problem Solver</span>
                             <span class="badge">Clean Code Advocate</span>
                             <span class="badge">Quick Learner</span>
@@ -675,7 +718,7 @@
                             <img src="assets/images/cert-css.jpeg"
                                 alt="CSS, Bootstrap, JavaScript, PHP Full Stack Crash Course" class="certificate__img"
                                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                            <div class="certificate__img-placeholder" style="display:flex">
+                            <div class="certificate__img-placeholder">
                                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="8" r="6"></circle>
@@ -711,7 +754,7 @@
                             <img src="assets/images/cert-ml.jpeg" alt="Machine Learning Certificate"
                                 class="certificate__img"
                                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                            <div class="certificate__img-placeholder" style="display:flex">
+                            <div class="certificate__img-placeholder">
                                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
