@@ -1495,7 +1495,27 @@ textarea {
 .contact__info-title {
     font-size: var(--fs-xl);
     font-weight: 700;
-    margin-bottom: var(--space-md);
+    margin-bottom: 4px;
+}
+
+.contact__location-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: var(--space-lg);
+    padding: 8px 15px;
+    border: 1px solid rgba(0, 212, 255, 0.28);
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(123, 97, 255, 0.1));
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    box-shadow: 0 4px 16px rgba(0, 212, 255, 0.08);
+}
+
+.contact__location-badge svg {
+    color: #7b61ff;
 }
 
 .contact__info-text {
@@ -1519,12 +1539,18 @@ textarea {
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
     transition: all var(--transition-base);
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .contact__detail-item:hover {
     border-color: var(--border-hover);
     transform: translateX(5px);
     box-shadow: var(--shadow-glow);
+}
+
+.contact__detail-item:hover .contact__detail-value {
+    color: var(--accent-primary);
 }
 
 .contact__detail-icon {
@@ -1756,6 +1782,12 @@ textarea {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+}
+
+@media (min-width: 769px) {
+    .footer__socials {
+        gap: 40px;
+    }
 }
 
 .footer__social-link {
@@ -2494,6 +2526,17 @@ textarea {
         margin-bottom: 8px;
     }
 
+    .contact__location-badge {
+        margin-top: 0.75rem;
+        padding: 7px 12px;
+        font-size: 0.7rem;
+    }
+
+    .contact__location-badge svg {
+        width: 14px;
+        height: 14px;
+    }
+
     .contact__info-text {
         font-size: 0.84rem;
         line-height: 1.6;
@@ -2502,6 +2545,9 @@ textarea {
 
     .contact__details {
         gap: 8px;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
     }
 
     .contact__detail-item {
@@ -2770,7 +2816,7 @@ textarea {
 
 @media (max-width: 480px) {
     .hero__buttons {
-        max-width: 240px;
+        max-width: 165px;
     }
 
     .hero__buttons .btn {
